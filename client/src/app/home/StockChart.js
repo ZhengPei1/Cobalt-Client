@@ -27,7 +27,7 @@ export default function StockChart(props) {
     // async function that returns generated apex chart element
     async function getChart() {
 
-        let URL = `${process.env.NEXT_PUBLIC_SERVER_URL}stock/candlestick_plot`;
+        let URL = `${process.env.NEXT_PUBLIC_PY_SERVER_URL}request/plot`;
 
         try {
             let response = await fetch(URL,{

@@ -13,7 +13,7 @@ export default function Signup() {
     e.preventDefault();
 
     // request server to sign up the current user
-    const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}auth/register`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ND_SERVER_URL}auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
