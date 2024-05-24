@@ -1,0 +1,85 @@
+
+:root{
+    --blue: #1a84b8;
+    --light-blue: #1aa4b8;
+    --bright-blue: #4285D6;
+    --navy: #000080;
+    --faint-blue: #90e0ef;
+
+    --gradient-degree: 120deg;
+    --gradient1: #2980b9;
+    --gradient2: #6dd5fa;
+    
+    --curs: "Brush Script MT", cursive;
+    --sans: 'europa',sans-serif;
+    --mono: 'SF Mono','Fira Code','Fira Mono','Roboto Mono',monospace;
+
+    --font-size-small: 18px;
+    --font-size-standard: 24px;
+    --font-size-large: 32px;
+    --font-size-header: 96px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+button{
+    font-size: var(--font-size-small);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    height: auto;
+    width: 100%;
+    
+    color: white;
+    background-color: var(--bright-blue);
+
+}
+
+/*styles used by home, profile and trade*/
+.main{
+    display: grid;
+    grid-template-columns: 1fr 19fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "navbar main-panel";
+
+    background-image: url("/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    height: 100%;
+    width: 100%;
+}
+
+.navbar{
+    grid-area: navbar;
+
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border: 2px solid var(--navy);
+
+    min-width: 50px;
+    height: 100%;
+    width: 100%;
+
+}
+
+.main_panel{
+    grid-area: main-panel;
+
+    height: 100%;
+    width: 100%;
+}
+

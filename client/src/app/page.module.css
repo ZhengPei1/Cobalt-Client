@@ -1,0 +1,119 @@
+.main{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr  auto;
+    grid-template-areas: 
+    "title description"
+    "auto-login email-login"
+    "guest guest";
+    gap: 20px;
+
+    background-image: url("/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    padding: 20px 15%;
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-items: center;
+}
+
+.description{
+    font-size: var(--font-size-small);
+    font-style: italic;
+    color: var(--navy);
+    font-weight: bold;
+    grid-area: description;
+}
+
+/**/
+.website_title{
+    grid-area: title;
+    font-size: var(--font-size-header);
+    font-family: var(--curs);
+    font-weight: 900;
+    text-align: left;
+    width: 100%;
+
+    background-clip: text;
+    background-image: linear-gradient(var(--gradient-degree), var(--gradient1), var(--gradient2));
+    -webkit-text-fill-color: transparent;
+}
+
+/**/
+.auto_login_form{
+    grid-area: auto-login;
+    border-radius: 20px;
+    border: 5px solid var(--bright-blue);
+    padding: 20px;
+
+    height: 100%;
+    width: 70%;
+
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+
+    align-items: center;
+    justify-content: center;
+}
+
+
+/**/
+.email_login_form{
+    grid-area: email-login;
+    border-radius: 20px;
+    border: 5px solid var(--bright-blue);
+    padding: 20px;
+
+    height: 100%;
+    width: 70%;
+
+    font-family: var(--sans);
+
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;    
+    grid-template-areas: 
+    "email email"
+    "password password"
+    "create submit";
+
+    align-items: center;
+    justify-items: center;
+    
+}
+
+.email_login_form > * {
+    height: auto;
+    width: 100%;
+}
+
+.email_login_form > div > label {
+    font-size: var(--font-size-small);
+    color: var(--navy);
+}
+
+.email_login_form > div >input {
+    font-size: var(--font-size-small);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+
+    height: 1.5em;
+    width: 100%;
+}
+
+/**/
+.guest_login{
+    font-size: var(--font-size-standard);
+    grid-area: guest;
+    height: auto;
+    width: auto;
+}
+

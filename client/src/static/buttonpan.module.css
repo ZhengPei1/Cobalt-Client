@@ -1,0 +1,65 @@
+.container{
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "ticker interval confirm"
+    "start-date end-date confirm";
+
+    padding: 0px 20px;
+
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-items: left;
+}
+
+.input_field{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 5px;
+
+    
+    grid-template-areas: 
+    "label"
+    "input";
+
+}
+
+.ticker{
+    grid-area: ticker;
+}
+
+.interval{
+    grid-area: interval;
+}
+
+.start_date{
+    grid-area: start-date;
+}
+
+.end_date{
+    grid-area: end-date;
+}
+
+.confirm{
+    grid-area: confirm;
+}
+
+.label{
+    grid-area: label;
+}
+
+.input{
+    grid-area: input;
+    width: 100%;
+
+    border-radius: 10px;
+    padding-left: 1em;
+    
+    border: 1px solid black;
+    height: 1.6em;
+}

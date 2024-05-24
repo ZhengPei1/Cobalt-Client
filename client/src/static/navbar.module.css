@@ -1,0 +1,15 @@
+.navbar{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-auto-flow: row;
+    gap: 24px;
+    align-items: center;
+    justify-items: center;
+
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    width: 100%;
+    height: 100%;
+}
