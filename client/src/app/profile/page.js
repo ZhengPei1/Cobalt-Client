@@ -5,7 +5,7 @@ import Navbar from "@/components/Navbar";
 import styles from "./page.module.css";
 
 export default function Profile() {
-    const [user, loading] = useContext(AuthContext);
+    const [user, loading, setLoading] = useContext(AuthContext);
 
     const render = loading ? <h1 style={{"textAlign" : "center"}}>Loading User Info ...</h1> :
         (

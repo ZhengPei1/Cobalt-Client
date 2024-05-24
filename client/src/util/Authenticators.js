@@ -20,10 +20,6 @@ export const googleSignIn = async () => {
 }
 
 // the sign out method
-export const logOut = () => {
-    signOut(auth).then(() => {
-        console.log('Signout Succesfull')
-      }).catch((error) => {
-        console.log('Signout Failed')
-      });
+export const logOut = async () => {
+    await signOut(auth);
 }

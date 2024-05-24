@@ -2,14 +2,20 @@ import styles from "@/static/navbar.module.css"
 import Link from "next/link"
 import { logOut } from "@/util/Authenticators"
 import { useRouter } from 'next/navigation'
+import { useContext } from "react"
+import { AuthContext } from "@/util/AuthContext"
 
 export default function Navbar(){
     const router = useRouter();
+    const [user, loading, setLoading] = useContext(AuthContext);
 
     const handleLogOut = async(e) =>{
         try{
+            // set loading user state to true to prevent profile page rendering error
+            setLoading(true); 
+            router.push("/"); // redirect before logout
             await logOut();
-            router.push("/");
+            
         }catch(error){
             alert("logout failed");
         }
