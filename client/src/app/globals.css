@@ -30,7 +30,6 @@
 body{
     height: 100vh;
     width: 100%;
-    overflow: hidden;
 }
 
 button{
@@ -41,16 +40,23 @@ button{
 
     height: auto;
     width: 100%;
+    box-shadow: 5px 2px grey;
     
     color: white;
     background-color: var(--bright-blue);
 
 }
 
+button:hover{
+    color: var(--navy);
+    background-color: white;
+    box-shadow: 10px 5px grey;
+}
+
 /*styles used by home, profile and trade*/
 .main{
     display: grid;
-    grid-template-columns: 1fr 19fr;
+    grid-template-columns: 1fr 15fr;
     grid-template-rows: 1fr;
     grid-template-areas: "navbar main-panel";
 
@@ -65,14 +71,7 @@ button{
 
 .navbar{
     grid-area: navbar;
-
-    border-top-right-radius: 40px;
-    border-bottom-right-radius: 40px;
-    border: 2px solid var(--navy);
-
     min-width: 50px;
-    height: 100%;
-    width: 100%;
 
 }
 
