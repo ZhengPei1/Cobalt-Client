@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import styles from "@/static/stockchart.module.css"
+import styles from "./stockchart.module.css"
 import dynamic from 'next/dynamic'
 
 // apex chart references windows in a client component, so dynamic import is needed

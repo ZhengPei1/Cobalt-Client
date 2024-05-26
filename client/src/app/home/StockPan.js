@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import styles from "@/static/stockpan.module.css"
+import styles from "./stockpan.module.css"
 import StockChart from "./StockChart";
 import ButtonPan from "./ButtonPan";
 
@@ -28,7 +28,8 @@ export default function StockPan(props) {
                 setTicker={setTicker}
                 setStart={setStart}
                 setEnd={setEnd}
-                setInterval={setInterval}>
+                setInterval={setInterval}
+                panel_id={props.panel_id}>
             </ButtonPan>
         </div>
     )

@@ -2,29 +2,38 @@
 import StockPan from "./StockPan"
 import Navbar from "@/components/Navbar"
 import styles from "./page.module.css"
-import config from "@/static/config.json"
+import { useContext } from "react"
+import { AuthContext } from "@/util/AuthContext"
+import LoadingPage from "@/components/LoadingPage"
 
 export default function Home() {
-    const values = config.values;
+    const [user, userinfo, loading, setLoading] = useContext(AuthContext);
 
-    return (
-        <main className="main">
-            <div className="navbar"><Navbar> </Navbar></div>
+    // ensure that the user has been loaded
+    const page = loading ? <LoadingPage /> :
+        (
+            <main className="main">
+                <div className="navbar"><Navbar> </Navbar></div>
 
-            <div className={`main_panel ${styles.container}`}>
-                <StockPan
-                    ticker={values[0].ticker}
-                    start={values[0].start}
-                    end={values[0].end}
-                    interval={values[0].interval}>  
-                </StockPan>
-                <StockPan
-                    ticker={values[1].ticker}
-                    start={values[1].start}
-                    end={values[1].end}
-                    interval={values[1].interval}>
-                </StockPan>
-            </div>
-        </main>
-    )
+                <div className={`main_panel ${styles.container}`}> {/*Initialize user data*/}
+                    <StockPan
+                        ticker={userinfo.panel1.ticker}
+                        start={userinfo.panel1.start_date}
+                        end={userinfo.panel1.end_date}
+                        interval={userinfo.panel1.interval}
+                        panel_id="panel1">
+                    </StockPan>
+                    <StockPan
+                        ticker={userinfo.panel2.ticker}
+                        start={userinfo.panel2.start_date}
+                        end={userinfo.panel2.end_date}
+                        interval={userinfo.panel2.interval}
+                        panel_id="panel2">
+                    </StockPan>
+                </div>
+            </main>
+        )
+
+
+    return page;
 }

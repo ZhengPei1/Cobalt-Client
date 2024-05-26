@@ -3,54 +3,55 @@ import { useContext } from "react";
 import { AuthContext } from "@/util/AuthContext";
 import Navbar from "@/components/Navbar";
 import styles from "./page.module.css";
+import LoadingPage from "@/components/LoadingPage";
 
 export default function Profile() {
-    const [user, loading, setLoading] = useContext(AuthContext);
+    const [user, userinfo, loading, setLoading] = useContext(AuthContext);
 
-    const render = loading ? <h1 style={{"textAlign" : "center"}}>Loading User Info ...</h1> :
+    // ensure that the user has been loaded
+    const page = loading ? <LoadingPage /> :
         (
-            <div className={`main_panel ${styles.container}`}>
-                <div className={styles.grid}>
-                    Name:
-                </div>
-                <div className={styles.grid}>
+            <main className="main">
+                <div className="navbar"><Navbar> </Navbar></div>
+                <div className={`main_panel ${styles.container}`}>
+                    <div className={styles.grid}>
+                        Name:
+                    </div>
+                    <div className={styles.grid}>
 
-                </div>
+                    </div>
 
-                <div className={styles.grid}>
-                    Email:
-                </div>
-                <div className={styles.grid}>
-                    {user.email}
-                </div>
+                    <div className={styles.grid}>
+                        Email:
+                    </div>
+                    <div className={styles.grid}>
+                        {user.email}
+                    </div>
 
-                <div className={styles.grid}>
-                    Password:
-                </div>
-                <div className={styles.grid}>
+                    <div className={styles.grid}>
+                        Password:
+                    </div>
+                    <div className={styles.grid}>
 
-                </div>
+                    </div>
 
-                <div className={styles.grid}>
-                    Email Verified: 
-                </div>
-                <div className={styles.grid}>
-                    {user.emailVerified ? "Verified" : "Not Verified"}
-                </div>
+                    <div className={styles.grid}>
+                        Email Verified:
+                    </div>
+                    <div className={styles.grid}>
+                        {user.emailVerified ? "Verified" : "Not Verified"}
+                    </div>
 
-                <div className={styles.grid}>
-                    Delete Account:
-                </div>
-                <div className={styles.grid}>
+                    <div className={styles.grid}>
+                        Delete Account:
+                    </div>
+                    <div className={styles.grid}>
 
+                    </div>
                 </div>
-            </div>
+            </main>
+
         );
 
-    return (
-        <main className="main">
-            <div className="navbar"><Navbar> </Navbar></div>
-            {render}
-        </main>
-    )
+    return page;
 }

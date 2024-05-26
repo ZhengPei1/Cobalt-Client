@@ -1,29 +1,36 @@
 .container{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-rows: auto 0.5fr 1fr 1fr;
     grid-template-areas: 
-    "Info Header Header"
-    "Watchlist Trending Trade";
+    "Info Info Search"
+    "Watchlist History Search"
+    "Watchlist History Trade"
+    "Watchlist History Trade";
 
     padding: 20px;
 
     width: 100%;
     height: 100%;
 
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-mini);
+    font-weight: bolder;
     text-align: center;
-    
+
+    grid-gap: 5px;
     
     .info{
         grid-area: Info;
         display: grid;
 
-        grid-template-columns: repeat(4, auto) 1fr;
-        grid-template-rows: auto;
-        grid-auto-flow: column;
+        grid-template-columns: repeat(4, auto);
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+        "balance . equity commission"
+        "balance-info reset equity-info commission-info";
 
         column-gap: 20px;
+
     }
 
     .watchlist{
@@ -35,8 +42,36 @@
         grid-auto-flow: column;
     }
 
-    .trending{
-        grid-area: Trending;
+    .history{
+        grid-area: History;
+    }
+
+    .search{
+        grid-area: Search;
+        display: grid;
+
+        gap: 10px;
+
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-auto-flow: rows;
+
+
+        .result{
+            grid-column: 1/-1;
+            grid-row: 3/4;
+
+            width: 100%;
+            height: 100%;
+
+            background-color: white;
+
+            border-radius: 20px;
+            border: 1px solid black;
+
+            font-weight: bolder;
+            text-align: center;
+        }
     }
 
     .trade{
@@ -46,35 +81,36 @@
     .title{
         grid-column: 1/-1;
         grid-row: 1/2;
-        
     }
 
-    
 }
 
-/*
-Adding internal lines to css grid 
-https://geary.co/internal-borders-css-grid/
-*/
-.grid__item::before, 
-.grid__item::after {
-   content: '';
-   position: absolute;
-   background-color: var(--line-color);
-   z-index: 1;
+
+.grid_item{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 8px; 
 }
 
-/* Row Borders */
-.grid__item::after {
-  inline-size: 100vw;
-  block-size: var(--line-thickness);
-  inset-inline-start: 0;
-  inset-block-start: calc(var(--line-offset) * -1);
+
+.value_display{
+    width: auto;
+    height: 20px;
+
+    border-radius: 50px;
+    border: 2px solid black;
+    background-color: white;
+
+    font-weight: bolder;
+    text-align: center;
 }
 
-/* Column Borders */
-.grid__item::before {
-  inline-size: var(--line-thickness);
-  block-size: 100vh;
-  inset-inline-start: calc(var(--line-offset) * -1);
+.value_input{
+    width: auto;
+    height: 20px;
+
+    border-radius: 8px;
+
+    font-weight: bolder;
+    padding-left: 10px;
 }

@@ -1,9 +1,12 @@
-import styles from "@/static/buttonpan.module.css"
-
-import {  useRef } from "react"
+import styles from "./buttonpan.module.css"
+import { AuthContext } from "@/util/AuthContext";
+import { writeData } from "@/util/DBOperations";
+import { useContext, useRef } from "react"
 
 // panel of buttons used in combination with stock-chart
 export default function ButtonPan(props) {
+
+    const [user, userinfo, loading, setLoading] = useContext(AuthContext);
 
     let ticker = useRef(props.ticker);
     let start_date = useRef(props.start);
@@ -11,7 +14,7 @@ export default function ButtonPan(props) {
     let interval = useRef(props.interval);
 
     // handle confirm button
-    function handleOnClick() {
+    async function handleOnClick() {
         if (ticker.current == null) {
             alert("You Must Select A Ticker!");
             return;
@@ -53,6 +56,14 @@ export default function ButtonPan(props) {
         props.setStart(start_date.current);
         props.setEnd(end_date.current);
         props.setInterval(interval.current);
+
+        // record user info
+        await writeData("users/"+ user.uid + "/" + props.panel_id, {
+            ticker : ticker.current,
+            start_date : start_date.current,
+            end_date : end_date.current,
+            interval : interval.current
+        })
     }
 
     return (

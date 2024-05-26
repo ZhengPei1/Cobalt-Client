@@ -1,4 +1,4 @@
-import styles from "@/static/navbar.module.css"
+import styles from "./navbar.module.css"
 import Link from "next/link"
 import { logOut } from "@/util/Authenticators"
 import { useRouter } from 'next/navigation'
