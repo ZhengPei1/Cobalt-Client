@@ -4,6 +4,8 @@ import {
     signInWithEmailAndPassword, 
     signInWithPopup, 
     GoogleAuthProvider} from "firebase/auth"
+
+
 /*
 Provides async functions for signing in, out, and resets
 The creation of user is handled by the python backend using firebase-admin
@@ -16,7 +18,7 @@ export const emailSignIn = async (email, password) =>{
 
 export const googleSignIn = async () => {
     const provider = new GoogleAuthProvider();
-    await signInWithPopup(auth, provider);
+    const userCredential = await signInWithPopup(auth, provider);
 }
 
 // the sign out method

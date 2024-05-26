@@ -1,5 +1,6 @@
 import styles from "@/static/buttonpan.module.css"
-import { useRef } from "react"
+
+import {  useRef } from "react"
 
 // panel of buttons used in combination with stock-chart
 export default function ButtonPan(props) {
@@ -9,6 +10,7 @@ export default function ButtonPan(props) {
     let end_date = useRef(props.end); 
     let interval = useRef(props.interval);
 
+    // handle confirm button
     function handleOnClick() {
         if (ticker.current == null) {
             alert("You Must Select A Ticker!");

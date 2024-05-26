@@ -4,8 +4,7 @@
     grid-template-rows: auto 1fr  auto;
     grid-template-areas: 
     "title description"
-    "auto-login email-login"
-    "guest guest";
+    "auto-login email-login";
     gap: 20px;
 
     background-image: url("/background.jpg");
@@ -56,7 +55,7 @@
     display: grid;
     gap: 10px;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 1fr;
 
     align-items: center;
     justify-content: center;
@@ -108,12 +107,3 @@
     height: 1.5em;
     width: 100%;
 }
-
-/**/
-.guest_login{
-    font-size: var(--font-size-standard);
-    grid-area: guest;
-    height: auto;
-    width: auto;
-}
-

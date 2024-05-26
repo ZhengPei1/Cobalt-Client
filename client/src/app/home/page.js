@@ -16,7 +16,7 @@ export default function Home() {
                     ticker={values[0].ticker}
                     start={values[0].start}
                     end={values[0].end}
-                    interval={values[0].interval}>
+                    interval={values[0].interval}>  
                 </StockPan>
                 <StockPan
                     ticker={values[1].ticker}

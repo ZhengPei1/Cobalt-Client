@@ -33,12 +33,6 @@ export default function Login() {
     }
   }
 
-  const handleGuestLogIn = async (e) =>{
-    e.preventDefault();
-
-    router.push("/home");
-  }
-
   return (
     <main className={styles.main}>
       <div className={styles.website_title}>Cobalt</div>
@@ -53,8 +47,6 @@ export default function Login() {
           className="button"
           style={{ "width": "100%"}}>
         </GoogleButton>
-
-        <button onClick={handleGuestLogIn}>Guest Login</button>
       </div>
 
       <form className={styles.email_login_form} onSubmit={handleEmailSignIn}>
