@@ -1,7 +1,7 @@
 "use client"
 import Navbar from "@/components/Navbar"
 import styles from "./page.module.css"
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "@/util/AuthContext";
 import LoadingPage from "@/components/LoadingPage";
 
@@ -11,7 +11,8 @@ export default function Trade() {
 
     const [balance, setBalance] = useState(null);
     const [commission, setCommission] = useState(null);
-
+    const ticker = useRef("");
+    const [tickerInfo, setTickerInfo] = useState(null);
 
     // initialize user data
     useState(() => {
@@ -20,6 +21,35 @@ export default function Trade() {
             setCommission(userinfo.commission);
         }
     }, [loading])
+
+    // handle the search feature
+    const handleSearch = async (e) => {
+
+        let URL = `${process.env.NEXT_PUBLIC_PY_SERVER_URL}request/ticker_info`;
+        try {
+            let response = await fetch(URL, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ "ticker": ticker.current }),
+            });
+
+            let res;
+
+            // detect if the ticker is valid
+            if (!response.ok) {
+                res = null;
+            } else {
+                res = await response.json();
+            }
+
+            setTickerInfo(res);
+            console.log(res)
+        } catch (error) {
+            return alert(error.message);
+        }
+    }
 
     // ensure that the user has been loaded
     const page = loading ? <LoadingPage /> :
@@ -54,9 +84,8 @@ export default function Trade() {
                         <div className={styles.title}>Watchlist</div>
                         <div>Symbol</div>
                         <div>Last</div>
-                        <div>Chg</div>
+                        <div>Now</div>
                         <div>Chg%</div>
-                        <div>Exit Pt</div>
                     </div>
 
                     <div className={`${styles.history} ${styles.grid_item}`}>
@@ -77,9 +106,13 @@ export default function Trade() {
                             placeholder="input a valid ticker here"
                             onChange={e => { ticker.current = e.target.value }}></input>
 
+                        <button className={styles.search_button} onClick={handleSearch}>Search</button>
+
 
                         <div className={styles.result}>
-                            Test
+                            <div>Name: {tickerInfo ? tickerInfo.name : ""} {tickerInfo ? "(" + tickerInfo.ticker + ")" : ""}</div>
+                            <div>Type: {tickerInfo ? tickerInfo.type : ""}</div>
+                            <button>Watchlist</button>
                         </div>
 
                     </div>
@@ -87,12 +120,21 @@ export default function Trade() {
 
                     <div className={`${styles.trade} ${styles.grid_item}`}>
                         <div className={styles.title}>Trade</div>
-                        <div>Symbol</div>
-                        <div>Last</div>
-                        <div>Chg</div>
-                        <div>Chg%</div>
-                        <div>Exit Pt</div>
-                        <div>Purchase</div>
+
+
+                        <div className={`${styles.display} ${styles.grid_item}`}>
+                            <div>Symbol</div>
+                            <div>Last</div>
+                            <div>Now</div>
+                            <div>Chg%</div>
+
+                            <div>{tickerInfo ? tickerInfo.ticker : ""}</div>
+                            <div>{tickerInfo ? tickerInfo.previousClose : ""}</div>
+                            <div>{tickerInfo ? tickerInfo.currentPrice : ""}</div>
+                            <div>{tickerInfo ? tickerInfo.percentageChange : ""}</div>
+                        </div>
+
+                        <div>Buy</div>
                         <div>Sell</div>
                     </div>
 
