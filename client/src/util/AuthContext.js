@@ -5,7 +5,10 @@ import { getData } from "./DBOperations";
 
 export const AuthContext = createContext();
 
-// provides user object to all pages
+/*
+Initializes user info and send to all the child components through useContext
+also contains default values for initialization
+*/
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [userinfo, setUserinfo] = useState(null);
@@ -69,13 +72,20 @@ function validateUserInfo(info) {
     "start": "2000-01-01",
     "end": "2020-01-01",
     "interval": "3mo"
-}
+  }
+
+  const defaultWatchlist = {
+    "AAPL" : true,
+    "MSFT" : true,
+    "BTC-CAD" : true
+  }
 
   const validatedInfo = {
     panel1: info.panel1 != undefined ? info.panel1 : defaultPanel1,
     panel2: info.panel2 != undefined ? info.panel2 : defaultPanel2,
-    balance: info.balance != undefined? info.balance : 10000,
-    commission: info.commission != undefined? info.commission : 1,
+    balance: info.balance != undefined ? info.balance : 10000,
+    commission: info.commission != undefined ? info.commission : 1,
+    watchlist: info.watchlist != undefined ? info.watchlist : defaultWatchlist,
   }
 
   return validatedInfo;

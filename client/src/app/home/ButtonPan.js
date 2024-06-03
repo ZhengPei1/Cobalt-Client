@@ -15,6 +15,8 @@ export default function ButtonPan(props) {
 
     // handle confirm button
     async function handleOnClick() {
+
+        // error detection
         if (ticker.current == null) {
             alert("You Must Select A Ticker!");
             return;
@@ -42,6 +44,7 @@ export default function ButtonPan(props) {
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
         const intraday = ["1m", "2m", "5m", "30m", "1h", "90m"];
 
+        // error detection
         if(ed_date > today){
             alert("you can't select an ending date greater than the current time");
             return;
@@ -52,6 +55,7 @@ export default function ButtonPan(props) {
             return;
         }
 
+        // update page
         props.setTicker(ticker.current);
         props.setStart(start_date.current);
         props.setEnd(end_date.current);

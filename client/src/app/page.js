@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import GoogleButton from "react-google-button";
 import { useState } from "react";
-import { emailSignIn, googleSignIn} from "@/util/Authenticators";
+import { emailSignIn, googleSignIn } from "@/util/Authenticators";
 import { useRouter } from 'next/navigation'
 
 // this will be the login page
@@ -35,20 +35,27 @@ export default function Login() {
 
   return (
     <main className={styles.main}>
+      {/* Website Title */}
       <div className={styles.website_title}>Cobalt</div>
 
+      {/* Website Icon */}
+      <img src = "/icon.svg" className={styles.icon}/>
+
+      {/* Website Description */}
       <div className={styles.description}>
         Hone your trading skills in a risk-free environment
       </div>
 
+      {/* Google Login Form */}
       <div className={styles.auto_login_form}>
         <GoogleButton
           onClick={handleGoogleSignIn}
           className="button"
-          style={{ "width": "100%"}}>
+          style={{ "width": "100%" }}>
         </GoogleButton>
       </div>
 
+      {/* Email Sign In Form */}
       <form className={styles.email_login_form} onSubmit={handleEmailSignIn}>
         <div style={{ gridArea: "email" }}>
           <label htmlFor="email">Email</label>
@@ -72,7 +79,6 @@ export default function Login() {
             required
             style={{ gridArea: 'password-input' }}
           />
-
         </div>
 
         <Link href="/signup" style={{ gridArea: "create" }}>Create Account</Link>

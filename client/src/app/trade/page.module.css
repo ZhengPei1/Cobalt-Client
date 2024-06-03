@@ -1,7 +1,7 @@
 .container{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr ;
-    grid-template-rows: auto auto 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr 1fr;
     grid-template-areas: 
     "Info Info Search"
     "Watchlist History Search"
@@ -11,7 +11,7 @@
     padding: 20px;
 
     width: 100%;
-    height: 100%;
+    height: 100vh;
 
     font-size: var(--font-size-mini);
     font-weight: bolder;
@@ -37,9 +37,15 @@
         grid-area: Watchlist;
         display: grid;
 
-        grid-template-columns: repeat(4, auto);
-        grid-template-rows: auto 1fr;
-        grid-auto-flow: column;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: min-content;
+        grid-auto-flow: row;
+        
+        row-gap: 12px;
+
+        max-height: 100%;
+        overflow-y: auto;
+
     }
 
     .history{
@@ -102,13 +108,29 @@
         }
     }
 
-    .title{
-        grid-column: 1/-1;
-        grid-row: 1/2;
-    }
-
 }
 
+
+.entry{
+    grid-column: 1/-1;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: min-content;
+
+    box-shadow: 2px 2px var(--light-blue);
+
+    transition: box-shadow 0.25s linear;
+}
+
+.entry:hover{
+    box-shadow: 5px 5px var(--light-blue);
+}
+
+.title{
+    grid-column: 1/-1;
+    grid-row: 1/2;
+}
 
 .grid_item{
     border: 1px solid black;

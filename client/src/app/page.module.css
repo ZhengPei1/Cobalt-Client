@@ -1,10 +1,10 @@
 .main{
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto 1fr  auto;
     grid-template-areas: 
-    "title description"
-    "auto-login email-login";
+    "title icon description description"
+    "auto-login auto-login email-login email-login";
     gap: 20px;
 
     background-image: url("/background.jpg");
@@ -20,12 +20,20 @@
     justify-items: center;
 }
 
+.icon{
+    grid-area: icon;
+
+    height: 80%;
+    width: 80%;
+}
+
 .description{
+    grid-area: description;
+
     font-size: var(--font-size-small);
     font-style: italic;
     color: var(--navy);
     font-weight: bold;
-    grid-area: description;
 }
 
 /**/
