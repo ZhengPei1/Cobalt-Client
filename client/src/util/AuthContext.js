@@ -1,7 +1,7 @@
 import { useContext, createContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase";
-import { getData } from "./DBOperations";
+import { getData, writeData } from "./DBOperations";
 
 export const AuthContext = createContext();
 
@@ -34,7 +34,11 @@ export const AuthContextProvider = ({ children }) => {
             if (snapshot.exists()) {
               setUserinfo(validateUserInfo(snapshot.val()));
             } else {
-              console.log("DNE")
+              // if user doesn't exist then create the user entry
+              console.log(snapshot.val())
+              
+              writeData("users/" + currentUser.uid, {email : currentUser.email});
+              setUserinfo(validateUserInfo({}));
             }
           }).catch(error => {
             console.log(error);;
