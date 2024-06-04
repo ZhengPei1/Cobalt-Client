@@ -1,6 +1,6 @@
 import styles from "./buttonpan.module.css"
-import { AuthContext } from "@/util/AuthContext";
-import { writeData } from "@/util/DBOperations";
+import { AuthContext } from "@/util/firebase/AuthContext";
+import { writeData } from "@/util/firebase/DBOperations";
 import { useContext, useRef } from "react"
 
 // panel of buttons used in combination with stock-chart

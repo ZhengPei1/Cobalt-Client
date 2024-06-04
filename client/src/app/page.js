@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import GoogleButton from "react-google-button";
 import { useState } from "react";
-import { emailSignIn, googleSignIn } from "@/util/Authenticators";
+import { emailSignIn, googleSignIn } from "@/util/firebase/Authenticators";
 import { useRouter } from 'next/navigation'
 
 // this will be the login page

@@ -1,9 +1,9 @@
 import styles from "./navbar.module.css"
 import Link from "next/link"
-import { logOut } from "@/util/Authenticators"
+import { logOut } from "@/util/firebase/Authenticators"
 import { useRouter } from 'next/navigation'
 import { useContext } from "react"
-import { AuthContext } from "@/util/AuthContext"
+import { AuthContext } from "@/util/firebase/AuthContext"
 
 export default function Navbar() {
     const router = useRouter();

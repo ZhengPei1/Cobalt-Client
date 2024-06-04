@@ -1,13 +1,31 @@
 .main{
+    width: 100%;
+    height: 100vh;
+
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto auto auto 1fr;
 
     justify-items: center;
     align-items: center;
 
-    padding: 10%;
-
     font-weight: bolder;
     font-size: var(--font-size-standard);
+}
+
+.website_title{
+    font-size: var(--font-size-header);
+    font-family: var(--curs);
+    font-weight: 900;
+    text-align: center;
+    width: 100%;
+
+    background-clip: text;
+    background-image: linear-gradient(var(--gradient-degree), var(--gradient1), var(--gradient2));
+    -webkit-text-fill-color: transparent;
+}
+
+.icon{
+    width: auto;
+    height: 100%
 }

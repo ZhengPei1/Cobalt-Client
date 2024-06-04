@@ -3,7 +3,7 @@ import StockPan from "./StockPan"
 import Navbar from "@/components/Navbar"
 import styles from "./page.module.css"
 import { useContext } from "react"
-import { AuthContext } from "@/util/AuthContext"
+import { AuthContext } from "@/util/firebase/AuthContext"
 import LoadingPage from "@/components/LoadingPage"
 
 export default function Home() {

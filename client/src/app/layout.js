@@ -1,5 +1,5 @@
 "use client"
-import { AuthContextProvider } from "@/util/AuthContext";
+import { AuthContextProvider } from "@/util/firebase/AuthContext";
 import Head from 'next/head'
 import "./globals.css";
 

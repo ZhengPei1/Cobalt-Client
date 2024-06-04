@@ -2,9 +2,9 @@
 import Navbar from "@/components/Navbar"
 import styles from "./page.module.css"
 import { useContext, useEffect, useRef, useState } from "react";
-import { AuthContext } from "@/util/AuthContext";
+import { AuthContext } from "@/util/firebase/AuthContext";
 import LoadingPage from "@/components/LoadingPage";
-import { writeData } from "@/util/DBOperations";
+import { writeData } from "@/util/firebase/DBOperations";
 
 export default function Trade() {
 

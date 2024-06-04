@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react";
-import { AuthContext } from "@/util/AuthContext";
+import { AuthContext } from "@/util/firebase/AuthContext";
 import Navbar from "@/components/Navbar";
 import styles from "./page.module.css";
 import LoadingPage from "@/components/LoadingPage";
