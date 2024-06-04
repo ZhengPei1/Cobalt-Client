@@ -66,15 +66,15 @@ Then fill it with default value
 function validateUserInfo(info) {
   const defaultPanel1 = {
     "ticker": "AAPL",
-    "start": "2024-04-01",
-    "end": "2024-05-01",
+    "start_date": "2024-04-01",
+    "end_date": "2024-05-01",
     "interval": "1d"
   };
 
   const defaultPanel2 = {
     "ticker": "MSFT",
-    "start": "2000-01-01",
-    "end": "2020-01-01",
+    "start_date": "2000-01-01",
+    "end_date": "2020-01-01",
     "interval": "3mo"
   }
 
