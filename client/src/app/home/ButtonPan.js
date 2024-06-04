@@ -42,7 +42,7 @@ export default function ButtonPan(props) {
         const today = new Date();
         const diffTime = Math.abs(today - st_date);
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
-        const intraday = ["1m", "2m", "5m", "30m", "1h", "90m"];
+        const intraday = ["1m", "2m", "5m", "15m", "30m", "1h", "90m"];
 
         // error detection
         if(ed_date > today){
