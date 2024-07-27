@@ -1,0 +1,15 @@
+.container{
+    height: min-content;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: min-content;
+
+    box-shadow: 2px 2px var(--light-blue);
+    transition: box-shadow 0.25s linear;
+}
+
+.container:hover{
+    box-shadow: 5px 5px var(--light-blue);
+}

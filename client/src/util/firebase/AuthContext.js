@@ -2,6 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase";
 import { getData, writeData } from "./DBOperations";
+import {DEFAULT_USER_STOCK_PANEL1, DEFAULT_USER_STOCK_PANEL2, DEFAULT_USER_WATCHLIST, DEFAULT_COMMISSION, DEFAULT_USER_BALANCE} from "@/constant";
 
 export const AuthContext = createContext();
 
@@ -64,32 +65,12 @@ If a property of user info is null (will happen to new users)
 Then fill it with default value
 */
 function validateUserInfo(info) {
-  const defaultPanel1 = {
-    "ticker": "AAPL",
-    "start_date": "2024-04-01",
-    "end_date": "2024-05-01",
-    "interval": "1d"
-  };
-
-  const defaultPanel2 = {
-    "ticker": "MSFT",
-    "start_date": "2000-01-01",
-    "end_date": "2020-01-01",
-    "interval": "3mo"
-  }
-
-  const defaultWatchlist = {
-    "AAPL" : true,
-    "MSFT" : true,
-    "BTC-CAD" : true
-  }
-
   const validatedInfo = {
-    panel1: info.panel1 != undefined ? info.panel1 : defaultPanel1,
-    panel2: info.panel2 != undefined ? info.panel2 : defaultPanel2,
-    balance: info.balance != undefined ? info.balance : 10000,
-    commission: info.commission != undefined ? info.commission : 1,
-    watchlist: info.watchlist != undefined ? info.watchlist : defaultWatchlist,
+    panel1: info.panel1 != undefined ? info.panel1 : DEFAULT_USER_STOCK_PANEL1,
+    panel2: info.panel2 != undefined ? info.panel2 :  DEFAULT_USER_STOCK_PANEL2,
+    balance: info.balance != undefined ? info.balance : DEFAULT_USER_BALANCE,
+    commission: info.commission != undefined ? info.commission : DEFAULT_COMMISSION,
+    watchlist: info.watchlist != undefined ? info.watchlist : DEFAULT_USER_WATCHLIST,
   }
 
   return validatedInfo;

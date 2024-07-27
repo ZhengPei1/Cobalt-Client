@@ -1,0 +1,65 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto) 1fr auto;
+    grid-template-areas: 
+    "balance"
+    "equity"
+    "commission"
+    "reset"
+    "position"
+    "market-value";
+
+    height: 100%;
+    width: 100%;
+
+}
+
+.two_rows{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr, 1fr;
+    grid-template-areas: 
+    "label"
+    "value";
+}
+
+.label{
+    font-size: var(--font-size-mini);
+    font-weight: bolder;
+    grid-area: label;
+}
+
+.value{
+    font-size: var(--font-size-standard);
+    font-family: var(--mono);
+    grid-area: value;
+}
+
+/* Components */
+.balance{
+    grid-area: balance;
+}
+
+.commission{
+    grid-area: commission;
+}
+
+.equity{
+    grid-area: equity;
+}
+
+.reset{
+    grid-area: reset;
+    justify-self: center;
+    width: 70%;
+}
+
+.button{
+    background-color: red;
+}
+
+.button:hover{
+    background-color: darkred;
+    color: white;
+}

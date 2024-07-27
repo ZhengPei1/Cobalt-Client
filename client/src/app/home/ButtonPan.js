@@ -10,7 +10,7 @@ export default function ButtonPan(props) {
 
     let ticker = useRef(props.ticker);
     let start_date = useRef(props.start);
-    let end_date = useRef(props.end); 
+    let end_date = useRef(props.end);
     let interval = useRef(props.interval);
 
     // handle confirm button
@@ -41,16 +41,16 @@ export default function ButtonPan(props) {
         const ed_date = new Date(end_date.current);
         const today = new Date();
         const diffTime = Math.abs(today - st_date);
-        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)); 
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         const intraday = ["1m", "2m", "5m", "15m", "30m", "1h", "90m"];
 
         // error detection
-        if(ed_date > today){
+        if (ed_date > today) {
             alert("you can't select an ending date greater than the current time");
             return;
         }
 
-        if(diffDays > 59 && intraday.includes(interval.current)){
+        if (diffDays > 59 && intraday.includes(interval.current)) {
             alert(`Intraday data (interval < 1day) are only available for the last 60 days from today, the starting date you selected is ${diffDays} days away from today`);
             return;
         }
@@ -62,11 +62,11 @@ export default function ButtonPan(props) {
         props.setInterval(interval.current);
 
         // record user info
-        await writeData("users/"+ user.uid + "/" + props.panel_id, {
-            ticker : ticker.current,
-            start_date : start_date.current,
-            end_date : end_date.current,
-            interval : interval.current
+        await writeData("users/" + user.uid + "/" + props.panel_id, {
+            ticker: ticker.current,
+            start_date: start_date.current,
+            end_date: end_date.current,
+            interval: interval.current
         })
     }
 

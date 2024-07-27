@@ -1,0 +1,41 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content min-content 1fr;
+    grid-template-areas: 
+    "title"
+    "section_titles"
+    "watchlist";
+
+    height: 100%;
+    width: 100%;
+
+    text-align: center;
+    font-weight: bolder;
+}
+
+.title{
+    grid-area: title;
+}
+
+.section_titles{
+    grid-area: section_titles;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: min-content;
+    padding: 0px, 10px, 0px, 10px;
+}
+
+.watchlist{
+    grid-area: watchlist;
+    height: auto;
+    width: 100%;
+
+    display : grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+
+    gap: 10px;
+    padding-top: 10px;
+}

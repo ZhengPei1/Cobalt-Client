@@ -37,7 +37,7 @@ body{
 
 button{
     font-size: var(--font-size-small);
-    padding: 10px;
+    padding: 5px;
     border-radius: 5px;
     border: 1px solid black;
 

@@ -1,0 +1,46 @@
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto) 1fr;
+    grid-template-areas: 
+    "title title"
+    "label search-box"
+    "search watchlist"
+    "result result";
+
+    height: 100%;
+    width: 100%;
+
+}
+
+.title{
+    grid-area: title;
+}
+
+.label{
+    grid-area: label;
+}
+
+.search_box{
+    grid-area: search-box;
+}
+
+.search{
+    padding: 20px;
+    grid-area: search;  
+}
+
+.watchlist{
+    padding: 20px;
+    grid-area: watchlist;
+}
+
+.result{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr, 1fr;
+    grid-area: result;
+}
+
+
+
