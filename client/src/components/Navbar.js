@@ -17,7 +17,6 @@ export default function Navbar() {
             await logOut();
 
         } catch (error) {
-            console.log(error)
             alert("logout failed");
         }
     }

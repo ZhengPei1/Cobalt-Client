@@ -2,7 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase";
 import { getData, writeData } from "./DBOperations";
-import {DEFAULT_USER_STOCK_PANEL1, DEFAULT_USER_STOCK_PANEL2, DEFAULT_USER_WATCHLIST, DEFAULT_COMMISSION, DEFAULT_USER_BALANCE} from "@/constant";
+import { DEFAULT_USER_STOCK_PANEL1, DEFAULT_USER_STOCK_PANEL2, DEFAULT_USER_WATCHLIST, DEFAULT_COMMISSION, DEFAULT_USER_BALANCE } from "@/constant";
 
 export const AuthContext = createContext();
 
@@ -37,12 +37,12 @@ export const AuthContextProvider = ({ children }) => {
             } else {
               // if user doesn't exist then create the user entry
               console.log(snapshot.val())
-              
-              writeData("users/" + currentUser.uid, {email : currentUser.email});
+
+              writeData("users/" + currentUser.uid, { email: currentUser.email });
               setUserinfo(validateUserInfo({}));
             }
           }).catch(error => {
-            console.log(error);;
+            console.log(error);
           });
 
       } else {
@@ -67,7 +67,7 @@ Then fill it with default value
 function validateUserInfo(info) {
   const validatedInfo = {
     panel1: info.panel1 != undefined ? info.panel1 : DEFAULT_USER_STOCK_PANEL1,
-    panel2: info.panel2 != undefined ? info.panel2 :  DEFAULT_USER_STOCK_PANEL2,
+    panel2: info.panel2 != undefined ? info.panel2 : DEFAULT_USER_STOCK_PANEL2,
     balance: info.balance != undefined ? info.balance : DEFAULT_USER_BALANCE,
     commission: info.commission != undefined ? info.commission : DEFAULT_COMMISSION,
     watchlist: info.watchlist != undefined ? info.watchlist : DEFAULT_USER_WATCHLIST,

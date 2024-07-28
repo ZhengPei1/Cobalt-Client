@@ -2,7 +2,9 @@ import styles from './search.module.css'
 import { useState } from "react";
 import { writeData } from "@/util/firebase/DBOperations";
 
-export default function Search({currentStock, setCurrentStock, watchlistStocks, setWatchlistStocks}) {
+
+// the search feature (Including add to watchlist feature)
+export default function Search({currentStock, setCurrentStock, watchlistStocks, setWatchlistStocks, user}) {
     const [userInput, setUserInput] = useState(null);
 
     // handlers
@@ -15,16 +17,15 @@ export default function Search({currentStock, setCurrentStock, watchlistStocks, 
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ "ticker": userInput }),
+                body: JSON.stringify({"ticker": userInput}),
             });
 
-            let res;
+            const res = await response.json();
 
             // detect if the ticker is valid
             if (!response.ok) {
-                res = null;
-            } else {
-                res = await response.json();
+                setCurrentStock(null);
+                throw new Error(res);
             }
 
             setCurrentStock(res);
@@ -35,25 +36,24 @@ export default function Search({currentStock, setCurrentStock, watchlistStocks, 
 
     // handle the watchlist feature
     const handleAddWatchlist = async () => {
-        if (!userInput) {
-            alert("You must search for a ticker first");
+        if (!currentStock) {
+            alert("You must search for a valid ticker first");
             return;
         }
         
         // check if the ticker is already in watchlist
-        if (searchResult in watchlistStocks) {
-            alert("The ticker is already in your watch list");
+        if (currentStock.ticker in watchlistStocks) {
+            alert("The stock is already in your watch list");
             return;
         }
 
         // if not, add the ticker to watchlist
-        setWatchlistStocks([
-            ...watchlistStocks,
-            searchResult
-        ])
+        const newWatchlist = { ...watchlistStocks, [currentStock.ticker]: currentStock }
+        setWatchlistStocks(newWatchlist);
 
+        let tickers = Object.keys(newWatchlist);
         // update database
-        await writeData("users/" + user.uid + "/watchlist", watchlistStocks);
+        await writeData("users/" + user.uid + "/watchlist", tickers);
     }
 
     // render the search section

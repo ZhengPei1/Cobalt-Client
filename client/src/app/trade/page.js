@@ -29,8 +29,13 @@ export default function Trade() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(userinfo.watchlist),
+                body: JSON.stringify({"ticker": userinfo.watchlist}),
             }).then(response => {
+                if (!response.ok) {
+                    return response.json.then(errorMsg =>{
+                        throw new Error(errorMsg);
+                    })
+                }
                 return response.json();
             }).then(response => {
                 setWatchlistStocks(response);
@@ -65,7 +70,8 @@ export default function Trade() {
                             currentStock={currentStock} 
                             setCurrentStock={setCurrentStock}
                             watchlistStocks={watchlistStocks} 
-                            setWatchlistStocks={setWatchlistStocks}></Search>
+                            setWatchlistStocks={setWatchlistStocks}
+                            user = {user}></Search>
                     </div>
 
                     {/* 

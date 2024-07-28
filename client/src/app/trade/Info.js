@@ -1,5 +1,7 @@
 import styles from './info.module.css'
 
+
+// the Info component displays the balance, commission, equity, reset button, position, market value
 export default function Info({balance, commission}) {
     return (
         <div className={styles.container}>
