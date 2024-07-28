@@ -13,19 +13,13 @@ export default function StockChart(props) {
     useEffect(() => {
         set_candle_chart(<div className={styles.message}>Loading...</div>);
 
-        getChart()
-            .then(response => {
-                set_candle_chart(response);
-            })
-            .catch(error => {
-                set_candle_chart(<div className={styles.message}>{error.message}</div>);
-            })
+        updateChart();
     }, [props.ticker, props.start, props.end, props.interval]);
 
 
 
-    // async function that returns generated apex chart element
-    async function getChart() {
+    // async function that directly updates the chart
+    async function updateChart() {
 
         let URL = `${process.env.NEXT_PUBLIC_PY_SERVER_URL}request/plot`;
 
@@ -41,7 +35,8 @@ export default function StockChart(props) {
             // if server returns error message, print it accordingly
             if (!response.ok) {
                 let message = await response.json();
-                return (<div className={styles.message}>{message}</div>)
+                (set_candle_chart(<div className={styles.message}>{message}</div>))
+                return;
             }
 
 
@@ -95,9 +90,9 @@ export default function StockChart(props) {
             })
 
             // return apex chart
-            return (<div><Chart type="candlestick" series={series} options={options} height="100%" width="100%" ></Chart></div>);
+            set_candle_chart(<div><Chart type="candlestick" series={series} options={options} height="100%" width="100%" ></Chart></div>);
         } catch (error) {
-            return <div className={styles.message}>{error.message}</div>;
+            set_candle_chart(<div className={styles.message}>{error.message}</div>);
         }
 
     }

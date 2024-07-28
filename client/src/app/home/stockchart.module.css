@@ -1,5 +1,8 @@
 
 .message{
     text-align: center;
-    font-size: var(--font-size-large);
+    font-size: var(--font-size-standard);
+    font-family: var(--mono);
+    color: red;
+    padding : 10px;
 }
