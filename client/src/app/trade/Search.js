@@ -30,7 +30,7 @@ export default function Search({currentStock, setCurrentStock, watchlistStocks, 
 
             setCurrentStock(res);
         } catch (error) {
-            return alert(error.message);
+            alert(error.message);
         }
     }
 
@@ -71,10 +71,10 @@ export default function Search({currentStock, setCurrentStock, watchlistStocks, 
                     onChange={e => { setUserInput(e.target.value) }}></input>
 
             {/* search button */}
-            <button className={styles.search} onClick={handleSearch}>Search</button>
+            <button className={`${styles.search} ${styles.button}`} onClick={handleSearch}>Search</button>
             
             {/* watchlist button */}
-            <button className={styles.watchlist} onClick={handleAddWatchlist}>Watchlist</button>
+            <button className={`${styles.watchlist} ${styles.button}`} onClick={handleAddWatchlist}>Watchlist</button>
 
             {/* search result display */}
             <div className={styles.result}>

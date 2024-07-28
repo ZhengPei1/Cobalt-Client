@@ -21,8 +21,8 @@ export default function Trade() {
     // initialize user data
     useEffect(() => {
         if (!loading) {
-            setBalance(userinfo.balance);
-            setCommission(userinfo.commission);
+            setBalance(Number(userinfo.balance));
+            setCommission(Number(userinfo.commission));
             setPosition(userinfo.position);
 
             // initialize watchlist

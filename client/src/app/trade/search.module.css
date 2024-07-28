@@ -12,6 +12,8 @@
     height: 100%;
     width: 100%;
 
+    gap: 10px;
+
     text-align: center;
     font-weight: bolder;
 }
@@ -29,13 +31,18 @@
 }
 
 .search{
-    padding: 20px;
     grid-area: search;  
 }
 
 .watchlist{
-    padding: 20px;
     grid-area: watchlist;
+}
+
+.button{
+    width: 50%;
+    height: min-content;
+    align-self: center;
+    justify-self: center;
 }
 
 .result{

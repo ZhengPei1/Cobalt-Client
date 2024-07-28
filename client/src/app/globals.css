@@ -41,19 +41,26 @@ button{
     border-radius: 5px;
     border: 1px solid black;
 
-    height: auto;
+    height: min-content;
     width: 100%;
     box-shadow: 5px 2px grey;
     
     color: white;
     background-color: var(--bright-blue);
-
 }
 
 button:hover{
     color: var(--navy);
     background-color: white;
     box-shadow: 10px 5px grey;
+}
+
+input{
+    border-radius: 10px;
+    padding-left: 1em;
+    
+    border: 1px solid black;
+    height: 1.6em;
 }
 
 /*styles used by home, profile and trade*/

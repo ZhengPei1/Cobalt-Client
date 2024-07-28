@@ -34,7 +34,7 @@ export default function Transaction({user, currentStock, balance, setBalance, co
         }
 
         // update balance
-        const newBalance = Number(balance - cost).toFixed(2);
+        const newBalance = Number((balance - cost).toFixed(2));
         const oldPosition = position[currentStock.ticker] ?? 0;
         const newPosition = {...position, [currentStock.ticker]: Number(userInputBuy) + oldPosition};
         setBalance(newBalance);
@@ -70,9 +70,8 @@ export default function Transaction({user, currentStock, balance, setBalance, co
         }
 
         const earning = currentStock.currentPrice * userInputSell - commission * userInputSell;
-
         // update balance
-        const newBalance = (Number(balance) + earning).toFixed(2);
+        const newBalance = Number((balance + earning).toFixed(2));
         const oldPosition = position[currentStock.ticker] ?? 0;
         const newPosition = {...position, [currentStock.ticker]: oldPosition - Number(userInputSell)};
         setBalance(newBalance);
@@ -127,7 +126,7 @@ export default function Transaction({user, currentStock, balance, setBalance, co
                         value = {userInputSell}
                         onChange={e => { setUserInputSell(e.target.value) }}></input>
                 <label className={styles.label_end}>share</label>
-                <button className={styles.button} onClick={handleSell}>Sell</button>
+                <button className={styles.button} style={{backgroundColor: "red"}} onClick={handleSell}>Sell</button>
             </div>
         </div>
     )
