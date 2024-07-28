@@ -2,7 +2,7 @@ import { useContext, createContext, useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Firebase";
 import { getData, writeData } from "./DBOperations";
-import { DEFAULT_USER_STOCK_PANEL1, DEFAULT_USER_STOCK_PANEL2, DEFAULT_USER_WATCHLIST, DEFAULT_COMMISSION, DEFAULT_USER_BALANCE } from "@/constant";
+import { DEFAULT_USER_STOCK_PANEL1, DEFAULT_USER_STOCK_PANEL2, DEFAULT_USER_WATCHLIST, DEFAULT_COMMISSION, DEFAULT_USER_BALANCE, DEFAULT_USER_POSITION } from "@/constant";
 
 export const AuthContext = createContext();
 
@@ -71,6 +71,7 @@ function validateUserInfo(info) {
     balance: info.balance != undefined ? info.balance : DEFAULT_USER_BALANCE,
     commission: info.commission != undefined ? info.commission : DEFAULT_COMMISSION,
     watchlist: info.watchlist != undefined ? info.watchlist : DEFAULT_USER_WATCHLIST,
+    position: info.position != undefined ? info.position : DEFAULT_USER_POSITION,
   }
 
   return validatedInfo;

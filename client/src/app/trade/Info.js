@@ -1,8 +1,7 @@
 import styles from './info.module.css'
 
-
 // the Info component displays the balance, commission, equity, reset button, position, market value
-export default function Info({balance, commission}) {
+export default function Info({balance, commission, position}) {
     return (
         <div className={styles.container}>
 
@@ -25,9 +24,9 @@ export default function Info({balance, commission}) {
                 <button className={styles.button}>Reset</button>
             </div>
 
-            <div className= {`${styles.position}, ${styles.two_rows}`}>
-                <div className= {styles.label}>Position:</div>
-                <div className= {styles.value}>TODO</div>
+            <div className= {`${styles.position}`}>
+                <div>Position:</div>
+                <div>{setUpPosition(position)}</div>
             </div>
 
             <div className= {`${styles.market_value}, ${styles.two_rows}`}>
@@ -38,4 +37,25 @@ export default function Info({balance, commission}) {
     );
 }
 
+function setUpPosition(position) {
+    if(!position) {
+        return;
+    }
+
+    let positionEntries = [];
+    for(const [ticker, shares] of Object.entries(position)) {
+        if(shares === 0) {
+            continue;
+        }
+        
+        positionEntries.push(
+            <div className={styles.position_entry}>
+                <div>Ticker: {ticker}</div> 
+                <div>Shares: {shares}</div>
+            </div>
+        );
+    }
+
+    return positionEntries;
+}
 

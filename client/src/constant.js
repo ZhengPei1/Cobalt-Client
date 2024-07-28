@@ -22,3 +22,5 @@ export const DEFAULT_USER_BALANCE = 100000;
 
 export const DEFAULT_COMMISSION = 0.1;
 
+export const DEFAULT_USER_POSITION = {};
+

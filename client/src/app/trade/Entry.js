@@ -1,6 +1,6 @@
 import styles from './entry.module.css'
 
-// entry component used in watchlist and trade, represents a single stock
+// entry component used to represents a single stock
 // use green and red to indicate stock price increase or decrease
 export default function Entry({ stockInfo }){
     if (!stockInfo) {

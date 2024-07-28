@@ -12,7 +12,7 @@
 
     height: 100%;
     width: 100%;
-
+    gap: 10px;
 }
 
 .two_rows{
@@ -62,4 +62,29 @@
 .button:hover{
     background-color: darkred;
     color: white;
+}
+
+.position{
+    grid-area: position;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+
+    font-size: var(--font-size-mini);
+    font-weight: bolder;
+    text-align: center;
+}
+
+.position_entry{
+    grid-column: 1/-1;
+    border: 1px solid black;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min-content;
+}
+
+.market_value{
+    grid-area: market-value;
 }
