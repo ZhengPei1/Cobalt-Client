@@ -36,8 +36,6 @@ export const AuthContextProvider = ({ children }) => {
               setUserinfo(validateUserInfo(snapshot.val()));
             } else {
               // if user doesn't exist then create the user entry
-              console.log(snapshot.val())
-
               writeData("users/" + currentUser.uid, { email: currentUser.email });
               setUserinfo(validateUserInfo({}));
             }

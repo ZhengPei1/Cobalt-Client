@@ -30,18 +30,18 @@ export default function StockChart(props) {
         let URL = `${process.env.NEXT_PUBLIC_PY_SERVER_URL}request/plot`;
 
         try {
-            let response = await fetch(URL,{
+            let response = await fetch(URL, {
                 method: "POST",
                 headers: {
-                  "Content-Type": "application/json",
+                    "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ "ticker" : props.ticker, "start" : props.start, "end" : props.end, "interval" : props.interval}),
-              });
-            
+                body: JSON.stringify({ "ticker": props.ticker, "start": props.start, "end": props.end, "interval": props.interval }),
+            });
+
             // if server returns error message, print it accordingly
-            if(!response.ok){
+            if (!response.ok) {
                 let message = await response.json();
-                return (<div className={styles.message}>{message.status}</div>)
+                return (<div className={styles.message}>{message}</div>)
             }
 
 
@@ -52,7 +52,7 @@ export default function StockChart(props) {
                 title: {
                     text: props.ticker,
                     align: 'left',
-                    style:{
+                    style: {
                         color: "#000080"
                     }
                 },
@@ -61,7 +61,7 @@ export default function StockChart(props) {
                 },
                 xaxis: {
                     type: "datetime",
-                    labels:{
+                    labels: {
                         style: {
                             colors: "#000080"
                         }
@@ -71,7 +71,7 @@ export default function StockChart(props) {
                     tooltip: {
                         enabled: true,
                     },
-                    labels:{
+                    labels: {
                         style: {
                             colors: "#000080"
                         }
