@@ -1,7 +1,7 @@
 import styles from './info.module.css'
 import { useEffect, useState } from 'react';
 
-// the Info component displays the balance, commission, equity, reset button, position, market value
+// the Info component displays the balance, commission, net worth, reset button, position, market value
 export default function Info({balance, commission, position}) {
     const [marketValue, setMarketValue] = useState(null);
 
@@ -47,8 +47,8 @@ export default function Info({balance, commission, position}) {
                 <div className= {styles.value}>${commission}</div>
             </div>
 
-            <div className= {`${styles.equity}, ${styles.two_rows}`}>
-                <div className= {styles.label}>Equity: (USD)</div>
+            <div className= {`${styles.net_worth}, ${styles.two_rows}`}>
+                <div className= {styles.label}>Net Worth: (USD)</div>
                 <div className= {styles.value}>
                     {marketValue === null ? "Loading ..." : "$" + (marketValue + balance).toFixed(2)}
                 </div>
@@ -77,7 +77,9 @@ function setUpPosition(position) {
     }
 
     let positionEntries = [];
-    const sort_func = (a, b) => {b[1] - a[1]};
+
+    // sort the positions based on the shares (high to low)
+    const sort_func = (a, b) => b[1] - a[1];
     const entries = Object.entries(position).sort(sort_func);
 
     for(const [ticker, shares] of entries) {

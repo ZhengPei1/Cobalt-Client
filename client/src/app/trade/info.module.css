@@ -4,7 +4,7 @@
     grid-template-rows: repeat(4, auto) 1fr auto;
     grid-template-areas: 
     "balance"
-    "equity"
+    "net-worth"
     "commission"
     "reset"
     "position"
@@ -45,8 +45,8 @@
     grid-area: commission;
 }
 
-.equity{
-    grid-area: equity;
+.net_worth{
+    grid-area: net-worth;
 }
 
 .reset{

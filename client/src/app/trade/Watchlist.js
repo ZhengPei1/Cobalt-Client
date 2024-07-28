@@ -23,8 +23,11 @@ export default function Watchlist({watchlistStocks}) {
 
 function setUpWatchlist(stockInfos) {
     let watchlistEntries = [];
-    for (const ticker in stockInfos) {
-        watchlistEntries.push(<Entry stockInfo={stockInfos[ticker]}></Entry>);
+
+    // sort the stocks using the ticker
+    let sortedStocks = Object.entries(stockInfos).sort();
+    for (const [, info] of sortedStocks) {
+        watchlistEntries.push(<Entry stockInfo={info}></Entry>);
     }
     return watchlistEntries;
 }
