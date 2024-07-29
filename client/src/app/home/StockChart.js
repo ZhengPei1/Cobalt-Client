@@ -92,7 +92,7 @@ export default function StockChart(props) {
             // return apex chart
             set_candle_chart(<div><Chart type="candlestick" series={series} options={options} height="100%" width="100%" ></Chart></div>);
         } catch (error) {
-            set_candle_chart(<div className={styles.message}>{error.message}</div>);
+            set_candle_chart(<div className={styles.message}>Server reported unknown error, try refreshing the page</div>);
         }
 
     }
