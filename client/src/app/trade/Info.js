@@ -1,8 +1,10 @@
 import styles from './info.module.css'
 import { useEffect, useState } from 'react';
+import { writeData } from "@/util/firebase/DBOperations";
+
 
 // the Info component displays the balance, commission, net worth, reset button, position, market value
-export default function Info({balance, commission, position}) {
+export default function Info({balance, commission, position, user}) {
     const [marketValue, setMarketValue] = useState(null);
 
     // find market value
@@ -32,6 +34,16 @@ export default function Info({balance, commission, position}) {
         });
     }, [position]);
 
+    // handler
+    // handles the reset request
+    const handleReset = async () => {
+        await writeData("users/" + user.uid + "/balance", null);
+        await writeData("users/" + user.uid + "/position", null);
+        await writeData("users/" + user.uid + "/watchlist", null);
+        window.location.reload();
+    }
+
+
 
     // render the Info component
     return (
@@ -55,7 +67,7 @@ export default function Info({balance, commission, position}) {
             </div>
 
             <div className= {`${styles.reset}`}>
-                <button className={styles.button}>Reset</button>
+                <button className={styles.button} onClick={handleReset}>Reset</button>
             </div>
 
             <div className= {`${styles.position}`}>

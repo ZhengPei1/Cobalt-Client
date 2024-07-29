@@ -59,7 +59,7 @@ export default function Trade() {
 
                     {/* Info Section */}
                     <div className={`${styles.info} ${styles.grid_item}`}>
-                        <Info balance={balance} commission={commission} position={position}></Info>
+                        <Info balance={balance} commission={commission} position={position} user = {user}></Info>
                     </div>
 
                     {/* Watchlist */}

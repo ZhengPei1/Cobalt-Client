@@ -1,7 +1,7 @@
 import { db } from "./Firebase";
 import { onDisconnect, ref, set, get } from "firebase/database";
 
-// write data to db
+// write data to db (Will overwrite existing data)
 // info should be a js object or string
 export async function writeData(path, info){
     await set(ref(db, path), info);
